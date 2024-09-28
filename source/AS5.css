@@ -1,0 +1,718 @@
+:root {
+  --bodyHeightScale: 1;
+}
+
+@keyframes TemporaryShow {
+  0%, 100% {
+    visibility: visible;
+  }
+}
+@keyframes TemporaryHide {
+  0%, 100% {
+    visibility: hidden;
+  }
+}
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+html body {
+  -webkit-user-select: none;
+  font-family: var(--font);
+  font-size: calc(var(--viewportHeightRatio) * (36px / 21.6) * var(--currentPageHeight) / 100 );
+  color: white;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#highlight {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#Electricity {
+  width: 100%;
+  height: 100%;
+}
+#Electricity[state=off] {
+  display: none;
+}
+@font-face {
+  font-family: "Arial";
+  src: url("/Fonts/arial.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto-Light";
+  src: url("/Fonts/RobotoMono-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("/Fonts/RobotoMono-Bold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Arial-Bold";
+  src: url("/Fonts/arialbd.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ariel-Bold";
+  src: url("/Fonts/arialbd.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat-Bold";
+  src: url("/Fonts/Montserrat-Bold.otf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+as5-element {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+as5-element #Mainframe {
+  width: 100%;
+  height: 100%;
+}
+as5-element #PageContainer {
+  font-size: 5vh;
+  font-family: Arial-Bold;
+}
+as5-element #PageContainer[state=PFD] #PFD, as5-element #PageContainer[state=MFD] #MFD {
+  display: block;
+}
+as5-element #PageContainer #PFD {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+as5-element #PageContainer #PFD #AP {
+  position: absolute;
+  width: 100%;
+  height: 18px;
+  top: 0;
+  left: 0;
+}
+as5-element #PageContainer #PFD #AP svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+as5-element #PageContainer #PFD #Horizon {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  top: 63px;
+  left: 75px;
+}
+
+as5-element #PageContainer #PFD #Horizon svg #slipSkid,
+as5-element #PageContainer #PFD #Horizon svg #turnRateIndicator {
+  transform: translateY(-20px);
+}
+
+as5-element #PageContainer #PFD #Altimeter {
+  position: absolute;
+  width: 150px;
+  height: calc(100% - 18px);
+  top: 18px;
+  right: 0;
+}
+
+as5-element #PageContainer #PFD #Altimeter .vertical-deviation-diamond-bug {
+  stroke: black;
+  stroke-width : 3;
+}
+as5-element #PageContainer #PFD #Altimeter .vertical-deviation-chevron-bug {
+  stroke: black;
+  stroke-width : 3;
+}
+
+as5-element #PageContainer #PFD #Airspeed {
+  position: absolute;
+  width: 20%;
+  height: calc(100% - 18px);
+  top: 18px;
+  left: 0;
+}
+as5-element #PageContainer #PFD #Compass {
+  position: absolute;
+  top: 18px;
+  left: 80px;
+  width: 323px;
+}
+as5-element #PageContainer #PFD #CDI {
+  position: absolute;
+  left: 32.5%;
+  width: 35%;
+  bottom: 10%;
+}
+as5-element #PageContainer #PFD glasscockpit-cdi polygon {
+  stroke-width: 1;
+}
+
+as5-element #PageContainer #MFD {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+as5-element #PageContainer #MFD #HSICompass {
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
+  width: 90%;
+  height: 90%;
+}
+as5-element #PageContainer #MFD #Infos {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+as5-element #PageContainer #MFD #Infos #SelectedHeading {
+  position: absolute;
+  width: 25%;
+  height: 10%;
+  right: 0%;
+  bottom: 0%;
+  border: solid 3px aqua;
+}
+as5-element #PageContainer #MFD #Infos #SelectedHeading #SelectedHeadingSymbol {
+  position: absolute;
+  width: 10%;
+  left: 5%;
+  top: 10%;
+}
+as5-element #PageContainer #MFD #Infos #SelectedHeading #SelectedHeadingValue {
+  position: absolute;
+  left: 35%;
+  color: aqua;
+  bottom: -15%;
+  font-size: 32px;
+  font-family: 'Roboto-Bold';
+}
+as5-element #PageContainer #MFD #Infos #GroundSpeed {
+  position: absolute;
+  width: 20%;
+  height: 15%;
+  left: -1px;
+  bottom: 0px;
+  border: solid 2px grey;
+  text-align: center;
+  line-height: 1.1;
+  font-family: 'Roboto-Bold';
+  font-size: 20px;
+}
+as5-element #PageContainer #MFD #Infos #GroundSpeed #GroundSpeedValue {
+  font-size: 30px;
+  color: magenta;
+  line-height: 1;
+}
+as5-element #PageContainer #MFD #Infos #WaypointDistance {
+  position: absolute;
+  width: 30%;
+  height: 15%;
+  right: -1px;
+  top: 0px;
+  border: solid 2px grey;
+  text-align: center;
+  line-height: 1.1;
+  font-family: 'Roboto-Bold';
+  font-size: 20px;
+}
+as5-element #PageContainer #MFD #Infos #WaypointDistance #WaypointDistanceValue {
+  font-size: 30px;
+  line-height: 1;
+  color: magenta;
+}
+as5-element #PageContainer #MFD #Infos #WaypointDistance #WaypointDistanceValue[mode=VOR] {
+  color: lime;
+}
+as5-element #PageContainer #ContextualMenu {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background-color: black;
+  border: solid 2px grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+as5-element #PageContainer #ContextualMenu[state=Inactive] {
+  visibility: hidden;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement {
+  width: 23%;
+  height: 80%;
+  text-align: center;
+  font-size: 120%;
+  background: linear-gradient(grey, black);
+  border: solid 2px grey;
+  line-height: 1.2;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement[state=Selected] {
+  border-color: aqua;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement[state=Inactive], as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement[state=Inactive] .ContextualMenuElementValue {
+  color: darkgrey;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement .ContextualMenuElementImage {
+  height: 50%;
+  bottom: 1%;
+  position: relative;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement .ContextualMenuElementImage img {
+  max-height: 100%;
+  max-width: 100%;
+}
+as5-element #PageContainer #ContextualMenu #ContextualMenuElements .ContextualMenuElement .ContextualMenuElementValue {
+  font-size: 115%;
+  color: aqua;
+}
+as5-element #PageContainer #ContextualMenu #SliderMenu {
+  flex: 0.1;
+  margin-bottom: 1%;
+  width: 90%;
+}
+as5-element #PageContainer #ContextualMenu #SliderMenu #SliderMenuBackground {
+  height: 2px;
+  width: inherit;
+  position: absolute;
+  background-color: grey;
+}
+as5-element #PageContainer #ContextualMenu #SliderMenu #SliderMenuCursor {
+  background-color: lightgrey;
+  height: 100%;
+  position: relative;
+  border-radius: 10px;
+  top: -2px;
+}
+as5-element #PageContainer #ContextualMenu #SliderMenu[state=Active] {
+  display: inherit;
+}
+as5-element #PageContainer #ContextualMenu #SliderMenu[state=Inactive] {
+  display: none;
+}
+as5-element #PageContainer #SelectionValueWindow {
+  position: absolute;
+  height: 30%;
+  width: 35%;
+  bottom: 0;
+  left: 32.5%;
+  background: linear-gradient(grey, black 20%);
+  border: 2px solid grey;
+  border-radius: 10px;
+  text-align: center;
+}
+as5-element #PageContainer #SelectionValueWindow[state=Active] {
+  display: inherit;
+}
+as5-element #PageContainer #SelectionValueWindow[state=Inactive] {
+  display: none;
+}
+as5-element #PageContainer #SelectionValueWindow #SelectionValueWindowTitle {
+  color: white;
+}
+as5-element #PageContainer #SelectionValueWindow #SelectionValueWindowValue {
+  color: aqua;
+}
+
+/* SVG elements */
+/* Most of the attributes on SVG elements can be modified via CSS
+  Refer to https://developer.mozilla.org/en-US/docs/Web/SVG for the available style attributes */
+
+/* Airspeed Indicator */
+as5-element #PFD glasscockpit-airspeed-indicator  {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .background {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .airspeed-reference-group {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .airspeed-reference-group .background {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .airspeed-reference-group .selected-speed-fixed-bug {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .airspeed-reference-group .selected-speed-text {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .airspeed-reference-group .selected-speed-text-mach {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator #shadowGradient {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .center-svg {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .center-group {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .selected-speed-bug {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .cursor {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .base-cursor-svg {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .rotating-cursor-shadow {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .rotating-cursor-svg {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .trend-element {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .tas-background {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .tas-tas-text {
+  display: none !important
+}
+as5-element #PFD glasscockpit-airspeed-indicator .tas-text {
+  display: none !important;
+}
+as5-element #PFD glasscockpit-airspeed-indicator .mach-text {
+  display: none !important
+}
+as5-element #PFD glasscockpit-airspeed-indicator .tas-gs-text {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .gs-text {
+
+}
+as5-element #PFD glasscockpit-airspeed-indicator .under-shadow {
+
+}
+
+/* Horizontal Compass */
+as5-element #PFD glasscockpit-horizontal-compass  {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .compass-background {
+
+}
+as5-element #PFD glasscockpit-horizontal-compass .compass-shadows {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .moving-ribbon {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .course-bug {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .ground-track-bug {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .bearing-background {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .bearing-text-wrapper {
+  
+}
+as5-element #PFD glasscockpit-horizontal-compass .bearing-text {
+  
+}
+
+/* Attitude Indicator */
+as5-element #PFD glasscockpit-attitude-indicator {
+
+}
+as5-element #PFD glasscockpit-attitude-indicator .horizon-top {
+
+}
+as5-element #PFD glasscockpit-attitude-indicator .horizon-bottom {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .horizon-separator {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-root {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude_pitch_container {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude_pitch {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-pitch-gradations {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-pitch-left-text {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-pitch-right-text {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .flight-director {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .flight-director-outer-left {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .flight-director-outer-left-line {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .flight-director-outer-right {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .flight-director-outer-right-line {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude_bank {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-arc-big-dash {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-arc-small-dash {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .attitude-arc {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .turn-rate-indicator {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .turn-rate-left-marker {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .turn-rate-right-marker {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .turn-rate-center-marker {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursors {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-left-lower {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-left-upper {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-right-lower {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-right-upper {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-triangle-inner-left {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-triangle-outer-left {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-triangle-inner-left {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-triangle-outer-right {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .cursor-top-triangle {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .slip-skid-ball {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .slip-skid-left-marker {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .slip-skid-right-marker {
+  
+}
+as5-element #PFD glasscockpit-attitude-indicator .low-bank-green-arc {
+  
+}
+
+/* Altimeter */
+as5-element #PFD glasscockpit-altimeter {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-group {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-top-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-grad {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-chevron-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-diamond-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-deviation-hollow-diamond-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-fixed-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-text {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-shadow {
+  
+}
+as5-element #PFD glasscockpit-altimeter .background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .graduation-group {
+  
+}
+as5-element #PFD glasscockpit-altimeter .main-grad {
+  
+}
+as5-element #PFD glasscockpit-altimeter .graduation-text {
+  
+}
+as5-element #PFD glasscockpit-altimeter .ground-line {
+  
+}
+as5-element #PFD glasscockpit-altimeter .ground-line-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .ground-line-hash-wrapper {
+
+}
+as5-element #PFD glasscockpit-altimeter .ground-line-hash {
+  
+}
+as5-element #PFD glasscockpit-altimeter .cursor {
+
+}
+as5-element #PFD glasscockpit-altimeter .cursor-svg {
+  
+}
+as5-element #PFD glasscockpit-altimeter .cursor-static-digit-group {
+
+}
+as5-element #PFD glasscockpit-altimeter .cursor-rotatating-group {
+  
+}
+as5-element #PFD glasscockpit-altimeter .cursor-rotatating-text-group {
+  
+}
+as5-element #PFD glasscockpit-altimeter .bugs-group {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .minimum-altitude-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-altitude-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .trend-element {
+  
+}
+as5-element #PFD glasscockpit-altimeter .cursor-shadow {
+  
+}
+as5-element #PFD glasscockpit-altimeter .pressure-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .pressure-text {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-speed-background {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-speed-left-bar {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-speed-dash {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-speed-dash-text {
+  
+}
+as5-element #PFD glasscockpit-altimeter .selected-VS-bug {
+  
+}
+as5-element #PFD glasscockpit-altimeter .vertical-speed-indicator {
+  
+}
+
+/* AP info bar */
+as5-element #PFD glasscockpit-ap-infobar #AP_Status[Display=Yellow] {
+  fill: yellow;
+}
+as5-element #PFD glasscockpit-ap-infobar #AP_Status[Display=Red] {
+  fill: red;
+}
+as5-element #PFD glasscockpit-ap-infobar #AP_Status[Display=YellowFlash] {
+  animation: FlashYellow 1s infinite;
+}
+as5-element #PFD glasscockpit-ap-infobar #AP_Status[Display=RedFlash] {
+  animation: FlashRed 1s infinite;
+}
+@keyframes FlashYellow {
+  5%, 45% {
+    fill: yellow;
+  }
+  55%, 95% {
+    fill: transparent;
+  }
+}
+@keyframes FlashRed {
+  0%, 45% {
+    fill: red;
+  }
+  55%, 100% {
+    fill: white;
+  }
+}
+
+/*# sourceMappingURL=AS5.css.map */

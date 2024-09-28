@@ -1,0 +1,76 @@
+﻿<script type="text/html" id="AS5">
+    <div id="Mainframe">
+        <div id="Electricity" state="off">
+            <glasscockpit-highlight id="highlight" style="position:absolute; width: 100%; height:100%;"></glasscockpit-highlight>
+            <div id="PageContainer">
+                <div id="PFD">
+                    <glasscockpit-ap-infobar id="AP"></glasscockpit-ap-infobar>
+                    <glasscockpit-attitude-indicator vertical-center="True" bottom-y="215" slip-skid-display-mode="Round" show-turn-rate="True" bank_size_ratio="-12" id="Horizon"></glasscockpit-attitude-indicator>
+                    <glasscockpit-altimeter height="1020" VSStyle="Compact" id="Altimeter"></glasscockpit-altimeter>
+                    <glasscockpit-airspeed-indicator height="850" id="Airspeed"></glasscockpit-airspeed-indicator>
+                    <glasscockpit-horizontal-compass ground-track-active="True" TruncateLeft="50" TruncateRight="78" spacing="50" id="Compass"></glasscockpit-horizontal-compass>
+                    <glasscockpit-cdi no-scale="True" indicator-shape="Diamond" id="CDI"></glasscockpit-cdi>
+                </div>
+                <div id="MFD">
+                    <glasscockpit-hsi no-heading-value="True" no-course-value="True" id="HSICompass"></glasscockpit-hsi>
+                    <div id="Infos">
+                        <div id="SelectedHeading">
+                            <svg id="SelectedHeadingSymbol" viewBox="0 0 50 100">
+                                <path d="M0,0 h50 v30 l-30,20 l30,20 v30 h-50 Z" fill="aqua"></path>
+                            </svg>
+                            <div id="SelectedHeadingValue">060°</div>
+                        </div>
+                        <div id="GroundSpeed">
+                            <div>GS KT</div>
+                            <div id="GroundSpeedValue">202</div>
+                        </div>
+                        <div id="WaypointDistance">
+                            <div>DIST NM</div>
+                            <div id="WaypointDistanceValue">371</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="ContextualMenu" state="Inactive">
+                    <div id="ContextualMenuElements">
+
+                    </div>
+                    <div id="SliderMenu" state="Active">
+                        <div id="SliderMenuBackground"></div>
+                        <div id="SliderMenuCursor"></div>
+                    </div>
+                </div>
+                <div id="SelectionValueWindow" state="Inactive">
+                    <div id="SelectionValueWindowTitle">Select Heading</div>
+                    <div id="SelectionValueWindowValue">353°</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<link rel="stylesheet" href="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/AS5.css" />
+
+<script type="text/html" import-script="/JS/SimPlane.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/Templates/Highlight/highlight.js"></script>
+
+<script type="text/html" import-template="/Pages/VCockpit/Instruments/Shared/Map/MapInstrument.html"></script>
+
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/AttitudeIndicator.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/AirspeedIndicator.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/Altimeter.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/APInfoBar.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/Templates/CDI/CDI.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/HorizontalCompass.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/HSIndicator.js"></script>
+
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/Templates/HSIndicator/HSIndicator.js"></script>
+
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/LogicElements/ContextualMenu.js"></script>
+
+
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/NavSystem.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/Shared/CommonPFD_MFD.js"></script>
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/PFD_Airspeed_Enhanced.js"></script>
+
+
+<script type="text/html" import-script="/Pages/VCockpit/Instruments/NavSystems/C206_GF5/AS5.js"></script>
